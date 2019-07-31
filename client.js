@@ -5,7 +5,7 @@ const moves = {
   "down": "Move: down",
   "left": "Move: left",
   "right": "Move: right"
-}
+};
 
 /**
  * Establishes connection with the game server
@@ -26,24 +26,22 @@ const connect = function() {
   });
   conn.on('connect', () => {
     conn.write("Name: MKC");
-    conn.write("Move: up");
-    conn.write("Move: up");
-
-    setTimeout(function() {
-      conn.write("Move: up");
-    },50);
-    setTimeout(function() {
-      conn.write("Move: up");
-    },50);
+    // conn.write("Move: up");
+    // conn.write("Move: up");
+    // const move = function(direction, interval, loops) {
+    //   let count = 0;
+    //   console.log(moves[direction], loops, interval);
+    //   while (count < loops) {
+    //     setTimeout(function() {
+    //       conn.write(moves[direction]);
+    //     },interval);
+    //     ++count;
+    //   }
+    // };
+    // move("up", 50, 5);
   });
-
-
-  
   return conn;
 };
 
-const move = function() {
-
-};
 
 module.exports = connect;
