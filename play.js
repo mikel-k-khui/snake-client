@@ -1,6 +1,6 @@
 const connect = require('./client');
 const setupInput = require('./input');
-const const = require('./constants');
+const { IP, PORT } = require('./constants');
 console.log('Connecting ...');
 
-setupInput(connect(const));
+setupInput(connect());

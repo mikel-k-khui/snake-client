@@ -1,4 +1,5 @@
 let connection;
+const constants = require('./constants');
 
 /**
  * Setup User Interface
@@ -7,10 +8,10 @@ let connection;
 
 const move = function(connect, direction, interval, loops) {
   let count = 0;
-  console.log(moves[direction], loops, interval);
+  console.log(constants[direction], loops, interval);
   while (count < loops) {
     setTimeout(function() {
-      connect.write(moves[direction]);
+      connect.write(constants[direction]);
     },interval*count);
     ++count;
   }
@@ -29,18 +30,9 @@ const setupInput = function(conn) {
   return stdin;
 };
 
-const moves = {
-  "'\u0003'": process.exit,
-  "up": "Move: up",
-  "down": "Move: down",
-  "left": "Move: left",
-  "right": "Move: right"
-  "queen": "Yas! Queen"
-};
-
 const handleUserInput = function(input) {
   // process.stdout.write("Checking intput\n");
-  // let command = moves[input];
+  // let command = constants[input];
   // command;
 
   switch (input) {
@@ -50,19 +42,19 @@ const handleUserInput = function(input) {
     break;
         
   case 'w':
-  case 'W': connection.write(moves["up"]); break;
+  case 'W': connection.write(constants["up"]); break;
  
   case 'a':
-  case 'A': connection.write(moves["left"]); break;
+  case 'A': connection.write(constants["left"]); break;
     
   case 's':
-  case 'S': connection.write(moves["down"]); break;
+  case 'S': connection.write(constants["down"]); break;
     
   case 'd':
-  case 'D': connection.write(moves["right"]); break;
+  case 'D': connection.write(constants["right"]); break;
 
   case 'q':
-  case 'Q': connection.write(moves["queen"]); break;
+  case 'Q': connection.write(constants["queen"]); break;
     
   default:
     break;
