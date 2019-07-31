@@ -1,12 +1,5 @@
 const net = require('net');
 
-const moves = {
-  "up": "Move: up",
-  "down": "Move: down",
-  "left": "Move: left",
-  "right": "Move: right"
-};
-
 /**
  * Establishes connection with the game server
  */
@@ -21,17 +14,19 @@ const connect = function() {
   conn.on('data', (data) => {
     console.log(`Your data was`, data);
   });
+  // successfully made connection
   conn.on('connect', () => {
     console.log(`Successfully connected to game server`);
   });
+  // inital setup
   conn.on('connect', () => {
     conn.write("Name: MKC");
-    // conn.write("Move: up");
-    // conn.write("Move: up");
-    // const move = function(direction, interval, loops) {
+    // conn.write("Move: down");
+    // conn.write("Move: down");
+    // // const move = function(direction, interval, loops) {
     //   let count = 0;
     //   console.log(moves[direction], loops, interval);
-    //   while (count < loops) {
+    //   while (count < loops) {s
     //     setTimeout(function() {
     //       conn.write(moves[direction]);
     //     },interval);
@@ -40,8 +35,8 @@ const connect = function() {
     // };
     // move("up", 50, 5);
   });
+  //end of initial connection
   return conn;
 };
-
 
 module.exports = connect;
