@@ -12,7 +12,7 @@ const move = function(connect, direction, interval, loops) {
   while (count < loops) {
     setTimeout(function() {
       connect.write(constants[direction]);
-    },interval*count);
+    },interval * count);
     ++count;
   }
 };
